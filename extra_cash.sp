@@ -1,42 +1,40 @@
-/* 
-	Extra Cash
-		Adds 16000 to every player on spawn 
-		
-*/
-
-
 #include <sourcemod>
+#include <morecolors>
 
-#define VERSION "0.2"
+#pragma semicolon 1
 
-new g_iAccount = -1;
-new Handle:Switch;
-new Handle:Cash;
+g_iAccount = -1;
+Handle Switch, Cash, Info;
 
-public Plugin:myinfo = 
+public Plugin myinfo =
 {
 	name = "Extra Cash",
-	author = "Peoples Army",
-	description = "Adds Extra Cash On Each Spawn",
-	version = VERSION,
-	url = "www.sourcemod.net"
+	author = "Peoples Army,babka68",
+	description = "Деньги при спавне игрока.",
+	version = "1.1",
+	url = "www.sourcemod.net,www.tmb-css.ru"
+};
+
+
+public void OnPluginStart()
+{
+	LoadTranslations("extra_cash.phrases");
+	g_iAccount = FindSendPropInfo("CCSPlayer", "m_iAccount");
+	Switch = CreateConVar("extra_cash_on", "1", "1 - Плагин включен, 0 - Плагин выключен.", FCVAR_NOTIFY);
+	Cash = CreateConVar("extra_cash_amount", "16000", "Устанавливает количество денег, выданных при спавне.", FCVAR_NOTIFY);
+	Info = CreateConVar("extra_cash_chat_info", "1", "1 - Отображать информацию о выданных средствах, 0 - Не отображат.", FCVAR_NOTIFY);
+	AutoExecConfig(true, "extra_cash");
+	HookEvent("player_spawn", Event_Spawn_Player);
 }
 
-public OnPluginStart()
+public Event_Spawn_Player(Handle event, const char[] name, bool dontBroadcast)
 {
-	g_iAccount = FindSendPropOffs("CCSPlayer", "m_iAccount");
-	Switch = CreateConVar("extra_Cash_on","1","1 turns plugin on 0 is off",FCVAR_NOTIFY);
-	Cash = CreateConVar("extra_cash_amount","16000","Sets Amount OF Money Given On Spawn",FCVAR_NOTIFY);
-	HookEvent("player_spawn" , Spawn);
-}
-
-public Spawn(Handle: event , const String: name[] , bool: dontBroadcast)
-{
-	new clientID = GetEventInt(event,"userid");
-	new client = GetClientOfUserId(clientID);
-	if(GetConVarInt(Switch))
+	int clientID = GetEventInt(event, "userid");
+	int client = GetClientOfUserId(clientID);
+	if (GetConVarInt(Switch))
 	{
-		SetMoney(client,GetConVarInt(Cash));
+		SetMoney(client, GetConVarInt(Cash));
+		if (GetConVarBool(Info))CPrintToChatAll("{lime}[Extra Cash] {fullred}%N {white} получил {yellow}%d$", client, GetConVarInt(Cash));
 	}
 }
 
@@ -45,5 +43,5 @@ public SetMoney(client, amount)
 	if (g_iAccount != -1)
 	{
 		SetEntData(client, g_iAccount, amount);
-	}	
+	}
 }
