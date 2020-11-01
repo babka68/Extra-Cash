@@ -39,7 +39,7 @@ public void OnPluginStart()
 	iMoney = cvar.IntValue;
 	cvar.AddChangeHook(CVarChanged_Money);
 
-	cvar = CreateConVar("extra_cash_chat_info", "1", "1 - отображать информацию о выданных средствах, 0 - не отображать.", _, true, 1.0);
+	cvar = CreateConVar("extra_cash_chat_info", "0", "0 - отображать информацию о выданных средствах, 0 - не отображать.", _, true, 0.0, true, 1.0);
 	bMsg = cvar.BoolValue;
 	cvar.AddChangeHook(CVarChanged_Msg);
 
