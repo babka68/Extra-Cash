@@ -1,4 +1,5 @@
 #pragma semicolon 1
+#include <sourcemod>
 #include <morecolors>
 
 #pragma newdecls required
@@ -13,15 +14,16 @@ bool
 	bLock[MAXPLAYERS+1] = {true, ...},
 	lock;
 
+int cwAutoSwapTeamType;
+
 public Plugin myinfo = 
 {
 	name = "Extra Cash",
-	version = "1.1",
+	version = "1.3",
 	description = "Деньги при спавне игрока.",
 	author = "Peoples Army, babka68",
 	url = "tmb-css.ru"
 }
-
 
 public void OnPluginStart()
 {
@@ -39,15 +41,26 @@ public void OnPluginStart()
 	iMoney = cvar.IntValue;
 	cvar.AddChangeHook(CVarChanged_Money);
 
-	cvar = CreateConVar("extra_cash_chat_info", "0", "0 - отображать информацию о выданных средствах, 0 - не отображать.", _, true, 0.0, true, 1.0);
+	cvar = CreateConVar("extra_cash_chat_info", "1", "1 - отображать информацию о выданных средствах, 0 - не отображать.", _, true, 0.0, true, 1.0);
 	bMsg = cvar.BoolValue;
 	cvar.AddChangeHook(CVarChanged_Msg);
+
+	if((cvar = FindConVar("sm_autoswapteam_type")))
+	{
+		cwAutoSwapTeamType = cvar.IntValue;
+		cvar.AddChangeHook(CVarChanged_AutoSwapTeamType);	
+	}
 
 	HookEvent("player_team", Event_Team);
 	HookEvent("player_spawn", Event_Spawn);
 	HookEvent("round_end", Event_End, EventHookMode_PostNoCopy);
 
 	AutoExecConfig(true, "extra_cash");
+}
+
+public void CVarChanged_AutoSwapTeamType(ConVar cvar, const char[] oldValue, const char[] newValue)
+{
+	cwAutoSwapTeamType = cvar.IntValue;
 }
 
 public void CVarChanged_Enable(ConVar cvar, const char[] oldValue, const char[] newValue)
@@ -111,8 +124,7 @@ public void Event_End(Event event, const char[] name, bool silent)
 	iRound++;
 	if(lock) return;
 
-	static ConVar cvar;
-	if((cvar || (cvar = FindConVar("sm_autoswapteam_type"))) && cvar.IntValue == 1)
+	if(cwAutoSwapTeamType == 1)
 	{
 		int timelimit = GetMapTimeLimit(timelimit), timeleft = GetMapTimeLeft(timeleft);
 		if(0 < timelimit && 0 < timeleft && timeleft/60 <= timelimit/2)
