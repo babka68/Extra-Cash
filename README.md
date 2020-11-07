@@ -8,10 +8,10 @@ sourcemod
 morecolors
 
 Установка:
-1) Поместить Extra Cash.smx по пути \addons\sourcemod\plugins
-2) (Не обязательно) Поместить Extra Cash.sp по пути \addons\sourcemod\scripting
-3) Поместить extra_cash.phrases по пути \addons\sourcemod\translations
-4) Перезапустить сервер
+1) Поместить Extra_Cash.smx по пути \addons\sourcemod\plugins
+2) (Не обязательно) Поместить Extra_Cash.sp по пути \addons\sourcemod\scripting
+3)  Поместить extra_cash.phrases по пути \addons\sourcemod\translations
+4)  Перезапустить сервер
 5) Настроить конфиг по пути /cfg/sourcemod/extra_cash.cfg создается при первом старте плагина.
 6) Сменить карту,если были внесены изменения и наслаждаться работой плагина.
 
@@ -26,6 +26,13 @@ morecolors
 Обновление 1.1 
 - Ничего особенного,просто добавил 
 - #pragma newdecls required и подправил все под новый синтаксис(вроде).
+
+Обновление 1.2
+- Переписан весь код,большое спасибо Grey83
+- Теперь деньги выдаются со 2 раунда.
+
+Обновление 1.3
+- Исправлены ошибки и убрана утечка памяти.
 
 Оригинал: https://forums.alliedmods.net/showthread.php?p=513942
 
