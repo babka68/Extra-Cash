@@ -1,8 +1,0 @@
-"Phrases"
-{
-    "info_mony"
-    {
-        "#format" "{1:s}"
-        "ru" "{white} Добро пожаловать, {red} {1} {white} Вам выдано "
-    }
-}
