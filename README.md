@@ -6,10 +6,10 @@
 - Выдача средств во 2 раунде
 
 Установка:
-1) Поместить Extra_Cash.smx по пути \addons\sourcemod\plugins
-2) (Не обязательно) Поместить Extra_Cash.sp по пути \addons\sourcemod\scripting
+1) Поместить extra_cash.smx по пути \addons\sourcemod\plugins
+2) Поместить extra_cash.sp по пути \addons\sourcemod\scripting(Не обязательно) 
 3) Прописать в server.cfg
-// Устанавливает количество денег, выданных во 2 раунде.
+// Сколько денежных средств будет выдано со 2 раунда?
 // Default: "16000"
 extra_cash_amount "16000"
 4) Перезапустить сервер
