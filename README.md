@@ -1,9 +1,8 @@
 # Extra-Cash
 Поддерживаемые игры: CS: Source (OrangeBox)CS: Source (v34)
-Описание: Выдача денежных средств во 2 раунде.
-Отличия от оригинала:
-- Новый синтаксис
-- Выдача средств во 2 раунде
+Описание: Выдача денежных средств со второго раунда
+
+- ПИСТОЛЕТНЫЙ РАУНД, ЧИТАТЬ! [URL unfurl="true"]https://hlmod.ru/resources/extra-cash.1831/field?field=faq[/URL]
 
 Установка:
 1) Поместить extra_cash.smx по пути \addons\sourcemod\plugins
