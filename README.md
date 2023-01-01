@@ -3,8 +3,6 @@
 
 - Описание: Выдача денежных средств со второго раунда
 
-- ПИСТОЛЕТНЫЙ РАУНД, ЧИТАТЬ! [URL unfurl="true"]https://hlmod.ru/resources/extra-cash.1831/field?field=faq[/URL]
-
 - Установка:
 1) Поместить extra_cash.smx по пути \addons\sourcemod\plugins
 2) Поместить extra_cash.sp по пути \addons\sourcemod\scripting(Не обязательно) 
@@ -12,6 +10,7 @@
 4) Настроить конфиг по пути cfg/sourcemod/extra_cash.cfg
 - extra_cash_start_amount "800" // Выдаваемая сумма всем игрокам в 1 раунде?
 - extra_cash_amount "16000" // Сумма денег, которую нужно установить игроку после 1 рунда
+5) Перезапустить сервер
 
 Обновление: 1.0
 Мной были внесены правки в исходный код:
