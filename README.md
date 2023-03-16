@@ -1,4 +1,4 @@
-# Extra-Cash
+# Extra-Cash 1.4.2
 - Поддерживаемые игры: CS: Source (OrangeBox)CS: Source (v34)
 
 - Описание: Выдача денежных средств со второго раунда
